@@ -3,12 +3,12 @@ name: CI/CD
 on:
   push:
     branches:
-      -develop
-      -master
-    pull_request:
-      branches:
-        - develop
-        - master
+      - develop
+      - master
+  pull_request:
+    branches:
+      - develop
+      - master
 
 jobs:
   flutter_test:

@@ -1,24 +1,4 @@
-//
-// import 'package:dio/dio.dart';
-// import 'package:fakestore/app/infra/model/product_model.dart';
-// import 'package:flutter_test/flutter_test.dart';
-// import 'package:mocktail/mocktail.dart';
-//
-// class MockDio extends Mock implements Dio {}
-//
-// void main(){
-//
-//   final mockDio = MockDio();
-//
-//   test('should return list of products', () async {
-//     when(() => mockDio.get(any())).thenAnswer((_) async =>
-//
-//         await Response<List<Product>>
-// });
-//
-//
-// }
-//
+
 const products = [
   {
     "id": 1,

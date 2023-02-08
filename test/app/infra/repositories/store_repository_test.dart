@@ -7,7 +7,7 @@ import 'package:fakestore/app/infra/repositories/store_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../external/datasource/store_datasource_test.dart';
+import '../../external/datasource/store_datasource.dart';
 
 class MockDatasource extends Mock implements StoreDatasource {}
 

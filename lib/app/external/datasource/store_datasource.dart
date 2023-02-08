@@ -1,16 +1,22 @@
 
 
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:fakestore/app/core/network/client.dart';
 import 'package:fakestore/app/infra/i_datasource/i_store_datasource.dart';
 import 'package:fakestore/app/infra/model/product_model.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../core/constants/app_texts.dart';
+import '../../core/error/failure.dart';
+
 @Injectable(as: IStoreDatasource)
 class StoreDatasource implements IStoreDatasource {
 
-  final Dio client = Dio();
+  final Dio client;
 
+  StoreDatasource(this.client);
 
   @override
   Future<List<Product>> getProducts() async {
@@ -29,13 +35,22 @@ class StoreDatasource implements IStoreDatasource {
 
         return result;
       }
-      // TODO
-      throw Exception('');
+      throw ServerException(
+        message: AppTexts.errorMessage400,
+        code: response.statusCode?.toString() ?? '',
+      );
 
 
     } on DioError catch (e) {
-      // TODO
-      throw Exception('');
+      print('error message ${e.message} and code: ${e.response?.statusCode?.toString()}');
+      if (e.error is SocketException) {
+        throw const ServerException.noConnection();
+      }
+
+      throw ServerException(
+        message: AppTexts.errorMessage400,
+        code: e.response?.statusCode?.toString() ?? '',
+      );
     }
   }
 

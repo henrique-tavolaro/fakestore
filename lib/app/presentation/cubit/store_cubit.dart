@@ -7,7 +7,7 @@ import '../../infra/model/product_model.dart';
 part 'store_state.dart';
 part 'store_cubit.freezed.dart';
 
-@Injectable(as: Cubit)
+@injectable
 class StoreCubit extends Cubit<StoreState> {
   final IStoreRepository repository;
 
@@ -20,7 +20,7 @@ class StoreCubit extends Cubit<StoreState> {
     final inputEither = await repository.getProducts();
 
     inputEither.fold(
-            (l) => emit(StoreState.failed(l.toString())),
+            (l) => emit(StoreState.failed(l.message)),
             (r) => emit(StoreState.loaded(r)));
   }
 }

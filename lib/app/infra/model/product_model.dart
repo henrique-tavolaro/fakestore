@@ -9,7 +9,7 @@ class Product extends ProductEntity with _$Product {
   const factory Product({
     required int id,
     required String title,
-    required String price,
+    required double price,
     required String category,
     required String description,
     required String image,

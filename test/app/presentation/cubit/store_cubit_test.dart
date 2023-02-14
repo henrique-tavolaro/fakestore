@@ -4,7 +4,7 @@ import 'package:fakestore/app/core/config/injection.dart';
 import 'package:fakestore/app/core/error/failure.dart';
 import 'package:fakestore/app/domain/i_repositories/i_store_repository.dart';
 import 'package:fakestore/app/infra/repositories/store_repository.dart';
-import 'package:fakestore/app/presentation/cubit/store_cubit.dart';
+import 'package:fakestore/app/presentation/cubit/store/store_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

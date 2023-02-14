@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dartz_test/dartz_test.dart';
 import 'package:fakestore/app/core/error/failure.dart';
 import 'package:fakestore/app/external/datasource/store_datasource.dart';
-import 'package:fakestore/app/infra/model/product_model.dart';
+import 'package:fakestore/app/infra/model/product/product_model.dart';
 import 'package:fakestore/app/infra/repositories/store_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

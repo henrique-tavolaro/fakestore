@@ -2,7 +2,7 @@ import 'package:fakestore/app/domain/i_repositories/i_store_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import '../../infra/model/product_model.dart';
+import '../../../infra/model/product/product_model.dart';
 
 part 'store_state.dart';
 part 'store_cubit.freezed.dart';

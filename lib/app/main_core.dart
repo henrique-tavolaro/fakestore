@@ -35,7 +35,7 @@ Future<void> buildMain(Flavor flavor) async {
   await runZonedGuarded(
 
       () async => runApp(
-          MyApp(flavor: flavor,)
+          MyApp()
       ),
       (error, stackTrace) {
         FirebaseCrashlytics.instance.recordError(error, stackTrace, fatal: true);

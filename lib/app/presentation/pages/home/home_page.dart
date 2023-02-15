@@ -1,12 +1,9 @@
 import 'package:fakestore/app/presentation/cubit/categories/categories_cubit.dart';
+import 'package:fakestore/app/presentation/cubit/products/products_cubit.dart';
 import 'package:fakestore/app/presentation/pages/home/components/categories_row.dart';
-import 'package:fakestore/app/presentation/pages/home/components/product_tile.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../core/config/injection.dart';
-import '../../cubit/store/store_cubit.dart';
 import 'components/products_grid.dart';
 
 class HomePage extends StatelessWidget {
@@ -20,7 +17,7 @@ class HomePage extends StatelessWidget {
           create: (_) => getIt<CategoriesCubit>()..getCategories(),
         ),
         BlocProvider(
-          create: (_) => getIt<StoreCubit>()..getProducts(),
+          create: (_) => getIt<ProductsCubit>()..getProducts(),
         ),
       ],
       child: HomeView(),
@@ -47,7 +44,7 @@ class HomeView extends StatelessWidget {
               failed: (error) => Text(error),
             );
           }),
-          BlocBuilder<StoreCubit, StoreState>(
+          BlocBuilder<ProductsCubit, ProductsState>(
             builder: (context, state) {
               return state.when(
                 initial: () => SizedBox.shrink(),

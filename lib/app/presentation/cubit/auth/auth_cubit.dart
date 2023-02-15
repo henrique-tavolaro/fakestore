@@ -1,24 +1,28 @@
-import 'package:fakestore/app/domain/i_repositories/i_auth_repository.dart';
-import 'package:fakestore/app/infra/i_datasource/i_auth_datasource.dart';
+import 'package:fakestore/app/domain/use_cases/auth/login_use_case.dart';
+import 'package:fakestore/app/domain/use_cases/auth/register_use_case.dart';
+import 'package:fakestore/app/infra/i_remote_datasource/i_auth_datasource.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'auth_state.dart';
 
 part 'auth_cubit.freezed.dart';
 
+@injectable
 class AuthCubit extends Cubit<AuthState> {
-  final IAuthRepository repository;
+  final LoginUseCase loginUseCase;
+  final RegisterUseCase registerUseCase;
 
-  AuthCubit(this.repository) : super(AuthState.initial());
+  AuthCubit(
+    this.loginUseCase,
+    this.registerUseCase,
+  ) : super(AuthState.initial());
 
   Future<void> login(AuthLoginParams params) async {
     emit(AuthState.loading());
-    final inputEither = await repository.login(
-      AuthLoginParams(
-        email: params.email,
-        password: params.password,
-      ),
+    final inputEither = await loginUseCase(
+      params: params,
     );
 
     inputEither.fold(
@@ -29,12 +33,8 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> register(AuthRegisterParams params) async {
     emit(AuthState.loading());
-    final inputEither = await repository.register(
-      AuthRegisterParams(
-        name: params.name,
-        email: params.email,
-        password: params.password,
-      ),
+    final inputEither = await registerUseCase(
+      params: params,
     );
 
     inputEither.fold(

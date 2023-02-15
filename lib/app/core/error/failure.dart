@@ -28,6 +28,10 @@ class ServerFailure extends Failure {
   }) : super(message: message, code: code);
 }
 
+class CacheFailure extends Failure {
+  const CacheFailure({required String message}) : super(message: message);
+}
+
 class ServerException implements Exception {
   const ServerException({
     required this.message,
@@ -44,3 +48,11 @@ class ServerException implements Exception {
 }
 
 class NoConnectionException implements Exception {}
+
+class CacheException implements Exception {
+  const CacheException({required this.message});
+
+  final String message;
+}
+
+class SecureKeyNotFoundException implements Exception {}

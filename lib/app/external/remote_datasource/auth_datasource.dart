@@ -1,13 +1,12 @@
 import 'dart:io';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:fakestore/app/core/constants/app_texts.dart';
 import 'package:fakestore/app/core/error/failure.dart';
 import 'package:fakestore/app/core/network/i_client.dart';
-import 'package:fakestore/app/infra/i_datasource/i_auth_datasource.dart';
 import 'package:fakestore/app/infra/model/user/user_model.dart';
 import 'package:injectable/injectable.dart';
+import 'package:fakestore/app/infra/i_remote_datasource/i_auth_datasource.dart';
 
 @Injectable(as: IAuthDatasource)
 class AuthDatasource implements IAuthDatasource {
@@ -16,16 +15,16 @@ class AuthDatasource implements IAuthDatasource {
   AuthDatasource(this.client);
 
   @override
-  Future<User> login(AuthLoginParams params) async {
+  Future<User> login({required AuthLoginParams params}) async {
     try {
       final response = await client.post(
-        HttpPostParams(
-          path: '/auth/login',
-          data: {
-            "email": params.email,
-            "password": params.password,
-          },
-        ),
+          params: HttpPostParams(
+            path: '/auth/login',
+            data: {
+              "email": params.email,
+              "password": params.password,
+            },
+          ),
       );
 
       if (response.statusCode == 200) {
@@ -46,10 +45,10 @@ class AuthDatasource implements IAuthDatasource {
   }
 
   @override
-  Future<Unit> register(AuthRegisterParams params) async {
+  Future<Unit> register({required AuthRegisterParams params}) async {
     try {
       final response = await client.post(
-        HttpPostParams(
+        params: HttpPostParams(
           path: '/auth/register',
           data: {
             "name": params.name,
@@ -59,12 +58,11 @@ class AuthDatasource implements IAuthDatasource {
         ),
       );
 
-      if(response.statusCode == 201) {
+      if (response.statusCode == 201) {
         return unit;
       }
 
       throw ServerException(message: AppTexts.errorCreatingUser);
-
     } on DioError catch (e) {
       if (e.error is SocketException) {
         throw const ServerException.noConnection();

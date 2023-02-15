@@ -1,13 +1,13 @@
 import 'package:injectable/injectable.dart';
 
 abstract class IHttpClient {
-  Future<HttpResponse<T>> get<T>(HttpGetParams params);
+  Future<HttpResponse<T>> get<T>({required HttpGetParams params});
 
-  Future<HttpResponse<T>> post<T>(HttpPostParams params);
+  Future<HttpResponse<T>> post<T>({required HttpPostParams params});
 
-  Future<HttpResponse<T>> put<T>(HttpPutParams params);
+  Future<HttpResponse<T>> put<T>({required HttpPutParams params});
 
-  Future<HttpResponse<T>> delete<T>(HttpDeleteParams params);
+  Future<HttpResponse<T>> delete<T>({required HttpDeleteParams params});
 }
 
 class HttpResponse<T> {

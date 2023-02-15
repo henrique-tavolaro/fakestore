@@ -21,8 +21,11 @@ class HttpClient extends IHttpClient {
     CustomInterceptor()
   ]);
 
+
+
+
   @override
-  Future<HttpResponse<T>> get<T>(HttpGetParams params) async {
+  Future<HttpResponse<T>> get<T>({required HttpGetParams params}) async {
     final result = await dio.get(
       params.path,
       queryParameters: params.queryParameters ?? null,
@@ -36,8 +39,8 @@ class HttpClient extends IHttpClient {
   }
 
   @override
-  Future<HttpResponse<T>> post<T>(HttpPostParams params) async {
-    final result = await dio.post(
+  Future<HttpResponse<T>> delete<T>({required HttpDeleteParams params}) async {
+    final result = await dio.delete(
       params.path,
       data: params.data,
       queryParameters: params.queryParameters ?? null,
@@ -51,7 +54,7 @@ class HttpClient extends IHttpClient {
   }
 
   @override
-  Future<HttpResponse<T>> put<T>(HttpPutParams params) async {
+  Future<HttpResponse<T>> put<T>({required HttpPutParams params}) async {
     final result = await dio.put(
       params.path,
       data: params.data,
@@ -66,8 +69,8 @@ class HttpClient extends IHttpClient {
   }
 
   @override
-  Future<HttpResponse<T>> delete<T>(HttpDeleteParams params) async {
-    final result = await dio.delete(
+  Future<HttpResponse<T>> post<T>({required HttpPostParams params}) async {
+    final result = await dio.post(
       params.path,
       data: params.data,
       queryParameters: params.queryParameters ?? null,

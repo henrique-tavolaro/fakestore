@@ -12,14 +12,10 @@ class AuthRepository implements IAuthRepository {
   AuthRepository(this.datasource);
 
   @override
-  Future<Either<Failure, User>> login(
-      AuthLoginParams params) async {
+  Future<Either<Failure, User>> login({required AuthLoginParams params}) async {
     try {
       final result = await datasource.login(
-        AuthLoginParams(
-          email: params.email,
-          password: params.password,
-        ),
+        params: params
       );
       return right(result);
     } on ServerException catch (e) {
@@ -29,14 +25,10 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future<Either<Failure, Unit>> register(
-      AuthRegisterParams params) async {
+      {required AuthRegisterParams params}) async {
     try {
       final result = await datasource.register(
-        AuthRegisterParams(
-            name: params.name,
-            email: params.email,
-            password: params.password,
-        ),
+        params: params
       );
       return right(result);
     } on ServerException catch (e) {

@@ -15,18 +15,18 @@ abstract class ILocalStorage {
 class LocalStorageReadParams {
   final String key;
 
-  LocalStorageReadParams(this.key);
+  LocalStorageReadParams({required this.key});
 }
 
 class LocalStorageDeleteParams {
   final String key;
 
-  LocalStorageDeleteParams(this.key);
+  LocalStorageDeleteParams({required this.key});
 }
 
 class LocalStorageWriteParams {
   final String key;
   final String value;
 
-  LocalStorageWriteParams(this.key, this.value);
+  LocalStorageWriteParams({required this.key, required this.value});
 }

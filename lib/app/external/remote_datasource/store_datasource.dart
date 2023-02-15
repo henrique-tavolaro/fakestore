@@ -18,7 +18,7 @@ class StoreDatasource implements IStoreDatasource {
   Future<List<Product>> getProducts() async {
     try {
       var result = <Product>[];
-      final response = await client.get(HttpGetParams(path: '/products'));
+      final response = await client.get(params: HttpGetParams(path: '/products'), );
 
       if (response.statusCode == 200) {
         final data = response.data as List;
@@ -33,7 +33,7 @@ class StoreDatasource implements IStoreDatasource {
       }
       throw ServerException(
         message: AppTexts.errorMessage400,
-        code: response.statusCode?.toString() ?? '',
+        code: response.statusCode.toString() ?? '',
       );
     } on DioError catch (e) {
       if (e.error is SocketException) {
@@ -51,7 +51,7 @@ class StoreDatasource implements IStoreDatasource {
   Future<List<String>> getCategories() async {
     try {
       final response =
-          await client.get(HttpGetParams(path: '/products/categories'));
+          await client.get(params: HttpGetParams(path: '/products/categories'),);
 
       if (response.statusCode == 200) {
         return List<String>.from(response.data);

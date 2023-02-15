@@ -28,6 +28,10 @@ class ServerFailure extends Failure {
   }) : super(message: message, code: code);
 }
 
+class CacheFailure extends Failure {
+  const CacheFailure({required String message}) : super(message: message);
+}
+
 class ServerException implements Exception {
   const ServerException({
     required this.message,

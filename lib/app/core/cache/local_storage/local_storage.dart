@@ -6,13 +6,15 @@ import 'package:fakestore/app/core/constants/app_texts.dart';
 import 'package:fakestore/app/core/error/failure.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: ILocalStorage)
 class LocalStorage extends ILocalStorage {
 
   final storage = new FlutterSecureStorage();
 
   @override
-  Future<Unit> delete(LocalStorageDeleteParams params) async {
+  Future<Unit> delete({required LocalStorageDeleteParams params}) async {
     try {
       await storage.delete(key: params.key);
       return unit;
@@ -32,7 +34,7 @@ class LocalStorage extends ILocalStorage {
   }
 
   @override
-  Future<String> read(LocalStorageReadParams params) async {
+  Future<String> read({required LocalStorageReadParams params}) async {
     try {
       final value = await storage.read(key: params.key);
       if(value != null){
@@ -54,7 +56,7 @@ class LocalStorage extends ILocalStorage {
   }
 
   @override
-  Future<Unit> write(LocalStorageWriteParams params) async {
+  Future<Unit> write({required LocalStorageWriteParams params}) async {
     try {
       await storage.write(key: params.key, value: params.value);
       return unit;

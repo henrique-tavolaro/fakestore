@@ -2,9 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:fakestore/app/infra/model/user/user_model.dart';
 
 abstract class IAuthDatasource {
-  Future<User> login(AuthLoginParams params);
+  Future<User> login({required AuthLoginParams params});
 
-  Future<Unit> register(AuthRegisterParams params);
+  Future<Unit> register({required AuthRegisterParams params});
 }
 
 class AuthRegisterParams {

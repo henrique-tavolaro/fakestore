@@ -3,7 +3,7 @@ import 'package:fakestore/app/core/error/failure.dart';
 import 'package:fakestore/app/domain/i_repositories/i_store_repository.dart';
 import 'package:fakestore/app/infra/model/product/product_model.dart';
 import 'package:injectable/injectable.dart';
-import '../i_datasource/i_store_datasource.dart';
+import 'package:fakestore/app/infra/i_remote_datasource/i_store_datasource.dart';
 
 @Injectable(as: IStoreRepository)
 class StoreRepository implements IStoreRepository {

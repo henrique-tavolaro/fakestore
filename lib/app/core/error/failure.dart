@@ -44,3 +44,11 @@ class ServerException implements Exception {
 }
 
 class NoConnectionException implements Exception {}
+
+class CacheException implements Exception {
+  const CacheException({required this.message});
+
+  final String message;
+}
+
+class SecureKeyNotFoundException implements Exception {}

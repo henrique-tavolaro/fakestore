@@ -1,10 +1,9 @@
 import 'package:fakestore/app/domain/i_repositories/i_auth_repository.dart';
-import 'package:fakestore/app/infra/i_datasource/i_auth_datasource.dart';
+import 'package:fakestore/app/infra/i_remote_datasource/i_auth_datasource.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_state.dart';
-
 part 'auth_cubit.freezed.dart';
 
 class AuthCubit extends Cubit<AuthState> {

@@ -2,12 +2,11 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:fakestore/app/core/network/i_client.dart';
-import 'package:fakestore/app/infra/i_datasource/i_store_datasource.dart';
 import 'package:fakestore/app/infra/model/product/product_model.dart';
 import 'package:injectable/injectable.dart';
-
-import '../../core/constants/app_texts.dart';
-import '../../core/error/failure.dart';
+import 'package:fakestore/app/core/constants/app_texts.dart';
+import 'package:fakestore/app/core/error/failure.dart';
+import 'package:fakestore/app/infra/i_remote_datasource/i_store_datasource.dart';
 
 @Injectable(as: IStoreDatasource)
 class StoreDatasource implements IStoreDatasource {

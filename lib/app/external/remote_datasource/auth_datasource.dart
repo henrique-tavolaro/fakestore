@@ -1,13 +1,12 @@
 import 'dart:io';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:fakestore/app/core/constants/app_texts.dart';
 import 'package:fakestore/app/core/error/failure.dart';
 import 'package:fakestore/app/core/network/i_client.dart';
-import 'package:fakestore/app/infra/i_datasource/i_auth_datasource.dart';
 import 'package:fakestore/app/infra/model/user/user_model.dart';
 import 'package:injectable/injectable.dart';
+import 'package:fakestore/app/infra/i_remote_datasource/i_auth_datasource.dart';
 
 @Injectable(as: IAuthDatasource)
 class AuthDatasource implements IAuthDatasource {

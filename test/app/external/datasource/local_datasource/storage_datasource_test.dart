@@ -1,22 +1,14 @@
 import 'package:dartz/dartz.dart';
-import 'package:fakestore/app/core/cache/local_storage/i_local_storage.dart';
 import 'package:fakestore/app/core/cache/local_storage/local_storage.dart';
 import 'package:fakestore/app/core/error/failure.dart';
 import 'package:fakestore/app/external/local_datasource/storage_datasource.dart';
 import 'package:fakestore/app/infra/i_local_datasource/i_storage_datasource.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'fakes/fakes.dart';
 
 class LocalStorageMock extends Mock implements LocalStorage {}
 
-class LocalStorageWriteParamsFake extends Fake
-    implements LocalStorageWriteParams {}
-
-class LocalStorageReadParamsFake extends Fake
-    implements LocalStorageReadParams {}
-
-class LocalStorageDeleteParamsFake extends Fake
-    implements LocalStorageDeleteParams {}
 
 void main() {
   final storage = LocalStorageMock();

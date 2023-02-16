@@ -17,4 +17,5 @@ class SaveTokenUseCase implements UseCase<Unit, StorageSaveTokenParams> {
       params: params,
     );
   }
+
 }

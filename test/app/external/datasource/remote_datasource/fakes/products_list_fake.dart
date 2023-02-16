@@ -1,4 +1,11 @@
 
+import 'package:fakestore/app/infra/model/product/product_model.dart';
+
+final productsList = products.map<Product>((product) {
+  final item = Product.fromJson(product);
+  return item;
+}).toList();
+
 const products = [
   {
     "id": 1,

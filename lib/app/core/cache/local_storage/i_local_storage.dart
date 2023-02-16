@@ -3,13 +3,13 @@ import 'package:dartz/dartz.dart';
 abstract class ILocalStorage {
   Future<Map<String, String>> readAll();
 
-  Future<String> read(LocalStorageReadParams params);
+  Future<String> read({required LocalStorageReadParams params});
 
   Future<Unit> deleteAll();
 
-  Future<Unit> delete(LocalStorageDeleteParams params);
+  Future<Unit> delete({required LocalStorageDeleteParams params});
 
-  Future<Unit> write(LocalStorageWriteParams params);
+  Future<Unit> write({required LocalStorageWriteParams params});
 }
 
 class LocalStorageReadParams {
